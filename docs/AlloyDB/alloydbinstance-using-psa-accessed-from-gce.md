@@ -82,6 +82,23 @@ The solution template helps in automating the creation, configuration of HA VPN 
 
 This section guides you through the process of deploying the solution.
 
+1. Click on Open in Google Cloud Shell button below.
+
+    <a href="https://ssh.cloud.google.com/cloudshell/editor?shellonly=true&cloudshell_git_repo=https://github.com/mamgainparas/cloudnetworking-config-solutions.git&cloudshell_workspace=alloydb-psa&cloudshell_open_in_editor=configuration/organization.tfvars&cloudshell_tutorial=tutorial.md" target="_new">
+        <img alt="Open in Cloud Shell" src="https://gstatic.com/cloudssh/images/open-btn.svg">
+    </a>
+
+2. Run the prerequisites script to enable APIs and set Cloud Build permissions.
+    ```
+    sh prereq.sh
+    ```
+
+3. Run the Cloud Build Job
+
+    ```
+    gcloud builds submit . --config build/cloudbuild.yaml
+    ```
+
 ### **Prerequisites**
 
 To use this configuration solution, ensure the following are installed:
@@ -90,6 +107,9 @@ To use this configuration solution, ensure the following are installed:
 2. **gcloud SDK** : install gcloud SDK from [here](https://cloud.google.com/sdk/docs/install) to authenticate to Google Cloud while running Terraform.
 
 ####
+
+### Deploy using button
+
 
 ### Deploy through terraform-cli
 
