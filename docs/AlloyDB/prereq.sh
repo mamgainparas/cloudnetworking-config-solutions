@@ -36,6 +36,8 @@ cd ../../execution
 
 ls
 
+pwd
+
 echo Running Organisation stage
 ./run.sh -s organisation -t init-apply-auto-approve
 
