@@ -93,6 +93,7 @@ This section guides you through the process of deploying the solution.
     sh prereq.sh
     ```
 
+
 3. Run the Cloud Build Job
 
     ```
