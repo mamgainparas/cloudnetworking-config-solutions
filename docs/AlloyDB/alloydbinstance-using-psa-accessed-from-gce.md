@@ -84,7 +84,7 @@ This section guides you through the process of deploying the solution.
 
 1. Click on Open in Google Cloud Shell button below.
 
-    <a href="https://ssh.cloud.google.com/cloudshell/editor?shellonly=true&cloudshell_git_repo=https://github.com/mamgainparas/cloudnetworking-config-solutions.git&cloudshell_open_in_editor=configuration/organization.tfvars&cloudshell_tutorial=docs/AlloyDB/alloydbinstance-using-psa-accessed-from-gce.md" target="_new">
+    <a href="https://ssh.cloud.google.com/cloudshell/editor?shellonly=true&cloudshell_git_repo=https://github.com/mamgainparas/cloudnetworking-config-solutions.git&cloudshell_open_in_editor=configuration/organization.tfvars&cloudshell_open_in_editor=configuration/networking.tfvars&cloudshell_tutorial=docs/AlloyDB/alloydbinstance-using-psa-accessed-from-gce.md" target="_new">
         <img alt="Open in Cloud Shell" src="https://gstatic.com/cloudssh/images/open-btn.svg">
     </a>
 
