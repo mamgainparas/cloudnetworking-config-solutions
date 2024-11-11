@@ -82,6 +82,17 @@ The solution template helps in automating the creation, configuration of HA VPN 
 
 This section guides you through the process of deploying the solution.
 
+### **Prerequisites**
+
+To use this configuration solution, ensure the following are installed:
+
+1. **Terraform** : modules are for use with Terraform 1.8+ and tested using Terraform 1.8+. Choose and install the preferred Terraform binary from [here](https://releases.hashicorp.com/terraform/).
+2. **gcloud SDK** : install gcloud SDK from [here](https://cloud.google.com/sdk/docs/install) to authenticate to Google Cloud while running Terraform.
+
+####
+
+### Deploy using button
+
 1. Click on Open in Google Cloud Shell button below.
 
     <a href="https://ssh.cloud.google.com/cloudshell/editor?shellonly=true&cloudshell_git_repo=https://github.com/mamgainparas/cloudnetworking-config-solutions.git&cloudshell_open_in_editor=configuration/organization.tfvars&cloudshell_open_in_editor=configuration/networking.tfvars&cloudshell_open_in_editor=configuration/producer/AlloyDB/alloydb.tfvars&cloudshell_tutorial=docs/AlloyDB/alloydbinstance-using-psa-accessed-from-gce.md" target="_new">
@@ -99,17 +110,6 @@ This section guides you through the process of deploying the solution.
     ```
     gcloud builds submit . --config build/cloudbuild.yaml
     ```
-
-### **Prerequisites**
-
-To use this configuration solution, ensure the following are installed:
-
-1. **Terraform** : modules are for use with Terraform 1.8+ and tested using Terraform 1.8+. Choose and install the preferred Terraform binary from [here](https://releases.hashicorp.com/terraform/).
-2. **gcloud SDK** : install gcloud SDK from [here](https://cloud.google.com/sdk/docs/install) to authenticate to Google Cloud while running Terraform.
-
-####
-
-### Deploy using button
 
 
 ### Deploy through terraform-cli
