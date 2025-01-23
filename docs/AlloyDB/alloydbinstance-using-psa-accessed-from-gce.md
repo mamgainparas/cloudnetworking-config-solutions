@@ -95,7 +95,7 @@ To use this configuration solution, ensure the following are installed:
 
 1. Click on Open in Google Cloud Shell button below.
 
-    <a href="https://ssh.cloud.google.com/cloudshell/editor?shellonly=true&cloudshell_git_repo=https://github.com/mamgainparas/cloudnetworking-config-solutions.git&cloudshell_open_in_editor=configuration/organization.tfvars&cloudshell_open_in_editor=configuration/networking.tfvars&cloudshell_open_in_editor=configuration/producer/AlloyDB/alloydb.tfvars&cloudshell_tutorial=docs/AlloyDB/alloydbinstance-using-psa-accessed-from-gce.md" target="_new">
+    <a href="https://ssh.cloud.google.com/cloudshell/editor?shellonly=true&cloudshell_git_repo=https://github.com/mamgainparas/cloudnetworking-config-solutions.git&cloudshell_open_in_editor=configuration/organization.tfvars&cloudshell_open_in_editor=configuration/networking.tfvars&cloudshell_open_in_editor=configuration/producer/AlloyDB/alloydb.tfvars&cloudshell_open_in_editor=configuration/producer/AlloyDB/config/instance-psa.yaml.example&cloudshell_tutorial=docs/AlloyDB/alloydbinstance-using-psa-accessed-from-gce.md" target="_new">
         <img alt="Open in Cloud Shell" src="https://gstatic.com/cloudssh/images/open-btn.svg">
     </a>
 
@@ -105,10 +105,16 @@ To use this configuration solution, ensure the following are installed:
     ```
 
 
-3. Run the Cloud Build Job
+3. Run the Cloud Build Job to create resources
 
     ```
-    gcloud builds submit . --config build/cloudbuild.yaml
+    gcloud builds submit . --config docs/AlloyDB/build/cloudbuild.yaml
+    ```
+
+4. [Optional] Run the Cloud Build Job to destroy resources
+
+    ```
+    gcloud builds submit . --config docs/AlloyDB/build/cloudbuild-destroy.yaml
     ```
 
 

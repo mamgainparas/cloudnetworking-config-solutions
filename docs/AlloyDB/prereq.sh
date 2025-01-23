@@ -29,23 +29,45 @@ if gsutil ls $BUCKET_NAME; then
     echo Terraform bucket already created!
 else
     echo Creating Terraform state bucket...
-    gsutil mb $BUCKET_NAME
+    #gsutil mb $BUCKET_NAME
+    gcloud storage buckets create gs://$BUCKET_NAME --project=$GOOGLE_CLOUD_PROJECT --uniform-bucket-level-access
 fi
 
-cd ../../execution
+cat > ../../execution/01-organization/providers.tf << EOF
+terraform {
+  backend "gcs" {
+    bucket                      = "$BUCKET_NAME"
+    prefix                      = "organization_stage"
+  }
+}
+EOF
 
-ls
+cat > ../../execution/02-networking/providers.tf << EOF
+terraform {
+  backend "gcs" {
+    bucket                      = "$BUCKET_NAME"
+    prefix                      = "networking_stage"
+  }
+}
+EOF
 
-pwd
+cat > ../../execution/04-producer/AlloyDB/providers.tf << EOF
+terraform {
+  backend "gcs" {
+    bucket                      = "$BUCKET_NAME"
+    prefix                      = "producer/alloydb_stage"
+  }
+}
+EOF
 
-echo Running Organisation stage
-./run.sh -s organisation -t init-apply-auto-approve
+#echo Running Organisation stage
+#./run.sh -s organisation -t init-apply-auto-approve
 
-echo Running Networking Stage
-./run.sh -s networking -t init-apply-auto-approve
+#echo Running Networking Stage
+#./run.sh -s networking -t init-apply-auto-approve
 
-echo Running Alloydb Stage
-./run.sh -s producer/alloydb -t init-apply-auto-approve
+#echo Running Alloydb Stage
+#./run.sh -s producer/alloydb -t init-apply-auto-approve
 
 echo "Granting Cloud Build's Service Account IAM roles to deploy the resources..."
 PROJECT_NUMBER=$(gcloud projects describe $GOOGLE_CLOUD_PROJECT --format='value(projectNumber)')
@@ -54,5 +76,9 @@ gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT --member=$MEMBER --
 gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT --member=$MEMBER --role=roles/iam.securityAdmin
 gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT --member=$MEMBER --role=roles/compute.networkAdmin
 gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT --member=$MEMBER --role=roles/secretmanager.secretAccessor
+gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT --member=$MEMBER --role=roles/iam.serviceAccountUser
+gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT --member=$MEMBER --role=roles/serviceusage.serviceUsageAdmin
+gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT --member=$MEMBER --role=roles/storage.objectAdmin
+gcloud projects add-iam-policy-binding $GOOGLE_CLOUD_PROJECT --member=$MEMBER --role=roles/alloydb.admin
 
 echo Script completed successfully!
