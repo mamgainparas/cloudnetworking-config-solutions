@@ -25,7 +25,7 @@ fi
 
 echo Running prerequisites on project $GOOGLE_CLOUD_PROJECT
 BUCKET_NAME=$GOOGLE_CLOUD_PROJECT-tf-state-1
-if gsutil ls $BUCKET_NAME; then
+if gsutil ls gs://$BUCKET_NAME; then
     echo Terraform bucket already created!
 else
     echo Creating Terraform state bucket...
@@ -33,7 +33,7 @@ else
     gcloud storage buckets create gs://$BUCKET_NAME --project=$GOOGLE_CLOUD_PROJECT --uniform-bucket-level-access
 fi
 
-cat > ../../execution/01-organization/providers.tf << EOF
+cat > execution/01-organization/providers.tf << EOF
 terraform {
   backend "gcs" {
     bucket                      = "$BUCKET_NAME"
@@ -42,7 +42,7 @@ terraform {
 }
 EOF
 
-cat > ../../execution/02-networking/providers.tf << EOF
+cat > execution/02-networking/providers.tf << EOF
 terraform {
   backend "gcs" {
     bucket                      = "$BUCKET_NAME"
@@ -51,7 +51,7 @@ terraform {
 }
 EOF
 
-cat > ../../execution/04-producer/AlloyDB/providers.tf << EOF
+cat > execution/04-producer/AlloyDB/providers.tf << EOF
 terraform {
   backend "gcs" {
     bucket                      = "$BUCKET_NAME"
