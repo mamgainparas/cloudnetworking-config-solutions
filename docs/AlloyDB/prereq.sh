@@ -24,7 +24,7 @@ then
 fi
 
 echo Running prerequisites on project $GOOGLE_CLOUD_PROJECT
-BUCKET_NAME=gs://$GOOGLE_CLOUD_PROJECT-tf-state-1
+BUCKET_NAME=$GOOGLE_CLOUD_PROJECT-tf-state-1
 if gsutil ls $BUCKET_NAME; then
     echo Terraform bucket already created!
 else
