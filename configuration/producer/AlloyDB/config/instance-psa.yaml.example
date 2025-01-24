@@ -1,3 +1,4 @@
+#Update the configuration and rename the file to instance-psa.yaml
 cluster_id: <cluster-id-here>
 cluster_display_name: <cluster-display-name-here>
 project_id: <project-id>
