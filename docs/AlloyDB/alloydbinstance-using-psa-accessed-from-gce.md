@@ -2,11 +2,11 @@
 
 **On this page**
 
-  1. [Objectives](#objectives)
+  1. ..[Objectives](#objectives)
 
-  2. [Architecture](#architecture)
+  2. ..[Architecture](#architecture)
 
-  3. [Request flow](#request-flow)
+  3. ..[Request flow](#request-flow)
 
   4. [Architecture Components](#architecture-components)
 
@@ -21,6 +21,7 @@
   9. [Optional : Delete the deployment](#optional-delete-the-deployment)
 
   10. [Submit feedback](#submit-feedback)
+
 
 ---
 
