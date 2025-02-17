@@ -2,11 +2,11 @@
 
 **On this page**
 
-  1. ..[Objectives](#objectives)
+  1. <a href="#objectives">Objectives</a>
 
-  2. ..[Architecture](#architecture)
+  2. <a href="#architecture">Architecture</a>
 
-  3. ..[Request flow](#request-flow)
+  3. [Request flow](#request-flow)
 
   4. [Architecture Components](#architecture-components)
 
